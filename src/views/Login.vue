@@ -95,13 +95,12 @@ export default {
           }).then((res) => {
             console.log(res.data);
             if (res.data.code == 5) {
+              localStorage.setItem('token',res.data.token)
               this.$message({
                 message: res.data.msg,
                 type: "success",
               });
-              setTimeout(()=>{
-                this.$router.push('/')
-              },2000)
+              this.$router.push({name:'Home'});
             } else {
               this.$message({
                 message: res.data.msg,
